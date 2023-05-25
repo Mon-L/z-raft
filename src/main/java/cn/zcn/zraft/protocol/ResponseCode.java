@@ -8,7 +8,15 @@ import java.util.Map;
  */
 public enum ResponseCode {
     UNKNOWN(404),
-    SUCCESS(200);
+    SUCCESS(200),
+    ILLEGAL_PEER(100),
+    EXPIRED_TERM(101),
+    MULTI_LEADER(102),
+    NETWORK_ERROR(103),
+
+    VOTE_GRANTED(201),
+    VOTE_REJECT(202)
+    ;
 
     private final int code;
 

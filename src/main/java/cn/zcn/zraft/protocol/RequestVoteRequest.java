@@ -1,11 +1,13 @@
 package cn.zcn.zraft.protocol;
 
+import java.io.Serializable;
+
 /**
  * @author zicung
  */
-public class RequestVoteRequest {
+public class RequestVoteRequest implements Serializable {
     private long term;
-    private long candidateId;
+    private String candidateId;
     private long lastLogTerm;
     private long lastLogIndex;
 
@@ -17,11 +19,11 @@ public class RequestVoteRequest {
         this.term = term;
     }
 
-    public long getCandidateId() {
+    public String getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(long candidateId) {
+    public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 

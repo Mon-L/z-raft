@@ -1,17 +1,20 @@
 package cn.zcn.zraft;
 
-import cn.zcn.zraft.protocol.AppendEntryRequest;
-import cn.zcn.zraft.protocol.AppendEntryResponse;
-import cn.zcn.zraft.protocol.RequestVoteRequest;
-import cn.zcn.zraft.protocol.RequestVoteResponse;
+import cn.zcn.zraft.protocol.*;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author zicung
  */
 public interface RaftProtocolService {
-    AppendEntryResponse handleAppendEntry(AppendEntryRequest appendEntryRequest);
+    CompletableFuture<AppendEntryResponse> handleAppendEntry(AppendEntryRequest appendEntryRequest);
 
-    RequestVoteResponse handleRequestVote(RequestVoteRequest request);
+    CompletableFuture<RequestVoteResponse> handleRequestVote(RequestVoteRequest requestVoteRequest);
 
-    RequestVoteResponse sendRequestVote(RequestVoteRequest request);
+    CompletableFuture<HeartbeatResponse> handleHeartbeat(HeartbeatRequest heartbeatRequest);
+
+    CompletableFuture<RequestVoteResponse> sendRequestVote(PeerId peerId, RequestVoteRequest requestVoteRequest);
+
+    CompletableFuture<HeartbeatResponse> sendHeartbeat(PeerId peerId, HeartbeatRequest heartbeatRequest);
 }

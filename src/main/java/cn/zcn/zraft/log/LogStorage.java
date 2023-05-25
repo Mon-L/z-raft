@@ -8,9 +8,17 @@ import cn.zcn.zraft.protocol.LogEntry;
 public interface LogStorage {
     void start();
 
+    Term getTerm();
+
+    void saveTerm(Term term);
+
+    long getLastLogIndex();
+
+    long getLastLogTerm();
+
     void append(LogEntry logEntry);
 
-    void getLogEntry(long index);
+    LogEntry getLogEntry(long index);
 
     void commit(long term, long index);
 

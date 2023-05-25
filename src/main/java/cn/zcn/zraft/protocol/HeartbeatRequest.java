@@ -5,10 +5,10 @@ import java.io.Serializable;
 /**
  * @author zicung
  */
-public class AppendEntryRequest implements Serializable {
-    private String leaderId;
+public class HeartbeatRequest implements Serializable {
+
     private long term;
-    private byte[] content;
+    private String leaderId;
 
     public String getLeaderId() {
         return leaderId;
@@ -24,13 +24,5 @@ public class AppendEntryRequest implements Serializable {
 
     public void setTerm(long term) {
         this.term = term;
-    }
-
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
     }
 }

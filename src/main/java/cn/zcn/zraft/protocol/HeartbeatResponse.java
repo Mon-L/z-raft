@@ -5,12 +5,14 @@ import java.io.Serializable;
 /**
  * @author zicung
  */
-public class AppendEntryResponse implements Serializable {
-
+public class HeartbeatResponse implements Serializable {
     private long term;
-    private long index;
-    private long pos;
     private ResponseCode code;
+
+    public HeartbeatResponse(long term, ResponseCode code) {
+        this.term = term;
+        this.code = code;
+    }
 
     public long getTerm() {
         return term;
@@ -18,22 +20,6 @@ public class AppendEntryResponse implements Serializable {
 
     public void setTerm(long term) {
         this.term = term;
-    }
-
-    public long getIndex() {
-        return index;
-    }
-
-    public void setIndex(long index) {
-        this.index = index;
-    }
-
-    public long getPos() {
-        return pos;
-    }
-
-    public void setPos(long pos) {
-        this.pos = pos;
     }
 
     public ResponseCode getCode() {
